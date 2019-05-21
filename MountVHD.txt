@@ -1,0 +1,2 @@
+select vdisk file= "C:\Users\Administrator\.vhdx\junctions.vhdx"
+attach vdisk

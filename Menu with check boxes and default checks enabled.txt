@@ -1,0 +1,81 @@
+Menu with check boxes and default checks enabled
+@echo off
+
+set size=3
+
+::preset
+set chbox2=x
+
+
+:prepare
+for /L %%i in (0,1,%size%) do (
+    if defined chbox%%i (
+        set st%%i=Y
+    ) else (
+        set chbox%%i= 
+    )
+)
+
+
+:menu
+cls
+echo.
+echo  1. [%chbox1%]  name_1:
+echo.
+echo  2. [%chbox2%]  name_2:
+echo.
+echo  3. [%chbox3%]  name_3:
+echo.
+echo.
+echo.
+
+
+choice /C 1234567890qa /N /M "Select [1-9] >> [a]pply or [q]uit:"
+echo.
+set inp=%errorlevel%
+
+if %inp%==11 (
+    exit
+)
+if %inp%==12 (
+    call :apply
+)
+
+::switch
+if defined st%inp% (
+    set st%inp%=
+    set chbox%inp%= 
+) else (
+    set st%inp%=Y
+    set chbox%inp%=X
+)
+goto :menu
+
+
+:apply
+for /L %%i in (0,1,%size%) do (
+    if defined st%%i (
+        call :st%%i
+        echo.
+    )
+)
+echo.
+pause
+goto :menu
+
+
+
+
+:st1
+echo First Command
+goto :eof
+
+
+:st2
+echo Second Command
+goto :eof
+
+
+:st3
+echo Third Command
+goto :eof
