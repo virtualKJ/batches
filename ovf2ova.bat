@@ -9,3 +9,10 @@ for /R %%1 %%i IN (*.vmx) DO ovftool.exe "%%i" "%%2%%~ni.ova"
 SET source=
 SET dest=
 for /R %%SOURCE% %%i IN (*.vmx) DO ovftool.exe "%%i" "%%DEST%%~ni.ova"
+
+
+Edit:
+#Works | use inputs on CLI 
+  ie ovf2ova.bat A:input B:output
+  
+for /R %1 %%i IN (*.vmx) DO ovftool.exe "%%i" "%2\%%~ni.ova"
