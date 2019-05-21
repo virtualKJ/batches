@@ -1,0 +1,374 @@
+::With Direct inputs for source destination | tired of fucking with it
+for /R Z:\ %%i IN (*.vmx) DO ovftool.exe "%%i" "E:\out\%%~ni.ova"
+::
+::This should in theory work
+for /R %%1 %%i IN (*.vmx) DO ovftool.exe "%%i" "%%2%%~ni.ova"
+::
+::or with set
+::
+SET source=
+SET dest=
+for /R %%SOURCE% %%i IN (*.vmx) DO ovftool.exe "%%i" "%%DEST%%~ni.ova"
+
+
+Edit:
+#Works | use inputs on CLI 
+  ie ovf2ova.bat A:input B:output
+  
+for /R %1 %%i IN (*.vmx) DO ovftool.exe "%%i" "%2\%%~ni.ova"
+
+
+::##``~~
+Doing this because it's fucking retarded how when a VM is at rest on storage not VMFS based it's fucking flat and is "Fulyy Allocated",
+which it isn't as that's not the case, yet if you go to upload/offload it to the cloud it will do just that. 
+
+With the new OVFtool and trying this shit out figured it'd be a good time to try and automate somewhat to avoid the cross sytem boundry bullshit
+and having to use workstation to convert then push....So here's step one as the others are an easy rclone copy/move/sync source: remote:
+
+
+:: see below
+::
+:: Doing this will also help with avoind the 200k file limit which I've hit a few times smh
+
+
+C:\Users\Administrator\ovf>ovftool.exe "Z:\pfSense_2.4.4.3-Bridge_vESXi-DEV\pfSense_2.4.4.3-Bridge_vESXi-DEV.vmx" "E:\out2\pfSense_2.4.4.3-Bridge_vESXi-DEV.ova"
+Opening VMX source: Z:\pfSense_2.4.4.3-Bridge_vESXi-DEV\pfSense_2.4.4.3-Bridge_vESXi-DEV.vmx
+Opening OVA target: E:\out2\pfSense_2.4.4.3-Bridge_vESXi-DEV.ova
+Writing OVA package: E:\out2\pfSense_2.4.4.3-Bridge_vESXi-DEV.ova
+Transfer Completed
+Completed successfully
+
+C:\Users\Administrator\ovf>ovftool.exe "Z:\PiHole - Virgin-Updated\PiHole - Virgin-Updated.vmx" "E:\out2\PiHole - Virgin-Updated.ova"
+Opening VMX source: Z:\PiHole - Virgin-Updated\PiHole - Virgin-Updated.vmx
+Error: Failed to open disk: PiHole - Virgin-Updated.vmdk
+Completed with errors
+
+C:\Users\Administrator\ovf>ovftool.exe "Z:\Template_pfSense\Template_pfSense.vmx" "E:\out2\Template_pfSense.ova"
+Opening VMX source: Z:\Template_pfSense\Template_pfSense.vmx
+Opening OVA target: E:\out2\Template_pfSense.ova
+Writing OVA package: E:\out2\Template_pfSense.ova
+Transfer Completed
+Completed successfully
+
+C:\Users\Administrator\ovf>ovftool.exe "Z:\Test_FreeNAS\Test_FreeNAS.vmx" "E:\out2\Test_FreeNAS.ova"
+Opening VMX source: Z:\Test_FreeNAS\Test_FreeNAS.vmx
+Opening OVA target: E:\out2\Test_FreeNAS.ova
+Writing OVA package: E:\out2\Test_FreeNAS.ova
+Transfer Completed
+Completed successfully
+
+
+
+
+C:\Users\Administrator>rclone lsjson E:out
+[
+{"Path":"Clone_pfSense-Internet","Name":"Clone_pfSense-Internet","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T10:46:12.0000924-04:00","IsDir":true},
+{"Path":"Clone_pfSense-Internet.ova","Name":"Clone_pfSense-Internet.ova","Size":593200640,"MimeType":"application/octet-stream","ModTime":"2019-05-21T10:50:34.4925924-04:00","IsDir":false},
+{"Path":"PiHole","Name":"PiHole","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T10:46:12.8042915-04:00","IsDir":true},
+{"Path":"Template_pfSense","Name":"Template_pfSense","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T10:46:12.8162926-04:00","IsDir":true},
+{"Path":"Template_pfSense.ova","Name":"Template_pfSense.ova","Size":496084480,"MimeType":"application/octet-stream","ModTime":"2019-05-21T10:54:31.0720264-04:00","IsDir":false},
+{"Path":"Test_FreeNAS","Name":"Test_FreeNAS","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T10:46:13.0882979-04:00","IsDir":true},
+{"Path":"Test_FreeNAS.ova","Name":"Test_FreeNAS.ova","Size":643825152,"MimeType":"application/octet-stream","ModTime":"2019-05-21T10:56:33.2916834-04:00","IsDir":false},
+{"Path":"pfSense_2.4.4.3-Bridge_vESXi-DEV","Name":"pfSense_2.4.4.3-Bridge_vESXi-DEV","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T10:46:12.5402876-04:00","IsDir":true},
+{"Path":"pfSense_2.4.4.3-Bridge_vESXi-DEV.ova","Name":"pfSense_2.4.4.3-Bridge_vESXi-DEV.ova","Size":496084480,"MimeType":"application/octet-stream","ModTime":"2019-05-21T10:52:37.0921723-04:00","IsDir":false}
+]
+
+
+C:\Users\Administrator>rclone lsjson E:out2
+[
+{"Path":"Clone_pfSense-Internet.ova","Name":"Clone_pfSense-Internet.ova","Size":593200640,"MimeType":"application/octet-stream","ModTime":"2019-05-21T11:01:42.5654514-04:00","IsDir":false},
+{"Path":"Template_pfSense.ova","Name":"Template_pfSense.ova","Size":496084480,"MimeType":"application/octet-stream","ModTime":"2019-05-21T11:05:23.2822605-04:00","IsDir":false},
+{"Path":"Test_FreeNAS.ova","Name":"Test_FreeNAS.ova","Size":643825152,"MimeType":"application/octet-stream","ModTime":"2019-05-21T11:07:24.6845079-04:00","IsDir":false},
+{"Path":"pfSense_2.4.4.3-Bridge_vESXi-DEV.ova","Name":"pfSense_2.4.4.3-Bridge_vESXi-DEV.ova","Size":496084480,"MimeType":"application/octet-stream","ModTime":"2019-05-21T11:03:33.2043780-04:00","IsDir":false}
+]
+
+
+
+C:\Users\Administrator>rclone lsjson Z:
+[
+{"Path":"#recycle","Name":"#recycle","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T10:28:33.7944907-04:00","IsDir":true},
+{"Path":".dvsData","Name":".dvsData","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T06:39:17.4773822-04:00","IsDir":true},
+{"Path":"Clone_pfSense-Internet","Name":"Clone_pfSense-Internet","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T11:01:42.5645312-04:00","IsDir":true},
+{"Path":"PiHole - Virgin-Updated","Name":"PiHole - Virgin-Updated","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T11:03:33.5999391-04:00","IsDir":true},
+{"Path":"Snap_Windows 10 v1903-201h_v113","Name":"Snap_Windows 10 v1903-201h_v113","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T07:10:00.4261100-04:00","IsDir":true},
+{"Path":"Template_pfSense","Name":"Template_pfSense","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T11:05:23.2783296-04:00","IsDir":true},
+{"Path":"Test_FreeNAS","Name":"Test_FreeNAS","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T11:07:24.6858688-04:00","IsDir":true},
+{"Path":"pfSense_2.4.4.3-Bridge_vESXi-DEV","Name":"pfSense_2.4.4.3-Bridge_vESXi-DEV","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-21T11:03:33.2059341-04:00","IsDir":true}
+]
+
+
+
+well this explains when trying to do over rclone serve ftp shit just disappeared
+
+
+
+
+ Directory of Z:\#recycle\PiHole - Virgin-Updated\PiHole - Virgin-Updated.vmsd.lck
+
+05/21/2019  08:20 AM    <DIR>          .
+05/21/2019  08:20 AM    <DIR>          ..
+05/21/2019  08:20 AM               512 M32188.lck
+05/21/2019  08:20 AM               512 M32298.lck
+05/21/2019  08:20 AM               512 M48729.lck
+05/21/2019  08:20 AM               512 M61796.lck
+               4 File(s)          2,048 bytes
+
+ Directory of Z:\#recycle\Template_pfSense
+
+05/21/2019  08:20 AM    <DIR>          .
+05/21/2019  10:28 AM    <DIR>          ..
+05/21/2019  11:05 AM    <DIR>          Template_pfSense.vmdk.lck
+05/21/2019  08:20 AM    <DIR>          Template_pfSense.vmsd.lck
+               0 File(s)              0 bytes
+
+ Directory of Z:\#recycle\Template_pfSense\Template_pfSense.vmdk.lck
+
+05/21/2019  11:05 AM    <DIR>          .
+05/21/2019  08:20 AM    <DIR>          ..
+05/21/2019  11:03 AM               512 M00371.lck
+05/21/2019  10:46 AM               512 M15088.lck
+05/21/2019  11:03 AM               512 M17903.lck
+05/21/2019  08:23 AM               512 M19945.lck
+05/21/2019  08:20 AM               512 M20050.lck
+05/21/2019  10:52 AM               512 M22098.lck
+05/21/2019  08:20 AM               512 M24009.lck
+05/21/2019  10:52 AM               512 M25620.lck
+05/21/2019  10:59 AM               512 M25999.lck
+05/21/2019  08:20 AM               512 M26140.lck
+05/21/2019  11:03 AM               512 M26257.lck
+05/21/2019  08:20 AM               512 M29794.lck
+05/21/2019  10:52 AM               512 M30728.lck
+05/21/2019  08:23 AM               512 M32223.lck
+05/21/2019  10:59 AM               512 M47428.lck
+05/21/2019  10:52 AM               512 M47815.lck
+05/21/2019  10:29 AM               512 M47986.lck
+05/21/2019  10:59 AM               512 M48111.lck
+05/21/2019  10:32 AM               512 M50398.lck
+05/21/2019  10:28 AM               512 M50533.lck
+05/21/2019  10:29 AM               512 M51182.lck
+05/21/2019  11:03 AM               512 M53281.lck
+05/21/2019  08:23 AM               512 M55107.lck
+05/21/2019  10:29 AM               512 M58518.lck
+05/21/2019  10:32 AM               512 M59280.lck
+05/21/2019  10:46 AM               512 M60453.lck
+05/21/2019  10:59 AM               512 M60576.lck
+05/21/2019  10:29 AM               512 M60582.lck
+05/21/2019  08:23 AM               512 M60832.lck
+05/21/2019  10:28 AM               512 M61211.lck
+              30 File(s)         15,360 bytes
+
+ Directory of Z:\#recycle\Template_pfSense\Template_pfSense.vmsd.lck
+
+05/21/2019  08:20 AM    <DIR>          .
+05/21/2019  08:20 AM    <DIR>          ..
+05/21/2019  08:20 AM               512 M00277.lck
+05/21/2019  08:20 AM               512 M22400.lck
+05/21/2019  08:20 AM               512 M27566.lck
+05/21/2019  08:20 AM               512 M63827.lck
+               4 File(s)          2,048 bytes
+
+ Directory of Z:\#recycle\Test_FreeNAS
+
+05/21/2019  10:28 AM    <DIR>          .
+05/21/2019  10:28 AM    <DIR>          ..
+05/21/2019  11:07 AM    <DIR>          Test_FreeNAS_2.vmdk.lck
+               0 File(s)              0 bytes
+
+ Directory of Z:\#recycle\Test_FreeNAS\Test_FreeNAS_2.vmdk.lck
+
+05/21/2019  11:07 AM    <DIR>          .
+05/21/2019  10:28 AM    <DIR>          ..
+05/21/2019  10:46 AM               512 M10827.lck
+05/21/2019  10:59 AM               512 M17522.lck
+05/21/2019  10:28 AM               512 M24412.lck
+05/21/2019  11:05 AM               512 M25751.lck
+05/21/2019  10:54 AM               512 M27706.lck
+05/21/2019  10:59 AM               512 M27839.lck
+05/21/2019  10:29 AM               512 M28567.lck
+05/21/2019  10:54 AM               512 M31637.lck
+05/21/2019  10:29 AM               512 M31897.lck
+05/21/2019  10:46 AM               512 M32554.lck
+05/21/2019  10:28 AM               512 M32673.lck
+05/21/2019  11:05 AM               512 M36640.lck
+05/21/2019  10:54 AM               512 M41570.lck
+05/21/2019  11:05 AM               512 M42030.lck
+05/21/2019  10:54 AM               512 M45162.lck
+05/21/2019  10:32 AM               512 M45170.lck
+05/21/2019  11:05 AM               512 M47684.lck
+05/21/2019  10:29 AM               512 M47940.lck
+05/21/2019  10:59 AM               512 M52803.lck
+05/21/2019  10:29 AM               512 M56931.lck
+05/21/2019  10:59 AM               512 M60552.lck
+05/21/2019  10:32 AM               512 M61328.lck
+              22 File(s)         11,264 bytes
+
+ Directory of Z:\.dvsData
+
+05/21/2019  06:39 AM    <DIR>          .
+05/21/2019  07:16 AM    <DIR>          ..
+05/21/2019  06:39 AM    <DIR>          50 1f 80 f1 82 3f d4 7d-bc ae 87 f7 c7 26 22 1b
+05/21/2019  06:39 AM    <DIR>          50 1f c9 39 4c 39 e8 7f-aa 1b ab 9f 87 a2 d1 3a
+05/21/2019  06:39 AM    <DIR>          50 1f d2 0e 14 38 0e 80-ea b3 ec a3 2e 25 79 b6
+               0 File(s)              0 bytes
+
+ Directory of Z:\.dvsData\50 1f 80 f1 82 3f d4 7d-bc ae 87 f7 c7 26 22 1b
+
+05/21/2019  06:39 AM    <DIR>          .
+05/21/2019  06:39 AM    <DIR>          ..
+05/21/2019  06:39 AM             4,608 1
+               1 File(s)          4,608 bytes
+
+ Directory of Z:\.dvsData\50 1f c9 39 4c 39 e8 7f-aa 1b ab 9f 87 a2 d1 3a
+
+05/21/2019  06:39 AM    <DIR>          .
+05/21/2019  06:39 AM    <DIR>          ..
+05/21/2019  06:39 AM             4,608 63
+               1 File(s)          4,608 bytes
+
+ Directory of Z:\.dvsData\50 1f d2 0e 14 38 0e 80-ea b3 ec a3 2e 25 79 b6
+
+05/21/2019  06:39 AM    <DIR>          .
+05/21/2019  06:39 AM    <DIR>          ..
+05/21/2019  06:39 AM             4,608 55
+               1 File(s)          4,608 bytes
+
+ Directory of Z:\Clone_pfSense-Internet
+
+05/21/2019  11:01 AM    <DIR>          .
+05/21/2019  07:16 AM    <DIR>          ..
+05/21/2019  06:39 AM               421 Clone_pfSense-Internet-630528e3.hlog
+05/21/2019  06:39 AM     8,589,934,592 Clone_pfSense-Internet-flat.vmdk
+05/21/2019  06:39 AM           270,840 Clone_pfSense-Internet.nvram
+05/21/2019  06:39 AM               570 Clone_pfSense-Internet.vmdk
+05/21/2019  06:39 AM                 0 Clone_pfSense-Internet.vmsd
+05/21/2019  08:10 AM             3,971 Clone_pfSense-Internet.vmx
+05/21/2019  08:15 AM    <DIR>          Clone_pfSense-Internet.vmx.lck
+05/21/2019  08:10 AM               277 Clone_pfSense-Internet.vmxf
+               7 File(s)  8,590,210,671 bytes
+
+ Directory of Z:\Clone_pfSense-Internet\Clone_pfSense-Internet.vmx.lck
+
+05/21/2019  08:15 AM    <DIR>          .
+05/21/2019  11:01 AM    <DIR>          ..
+05/21/2019  08:15 AM               512 M57975.lck
+               1 File(s)            512 bytes
+
+ Directory of Z:\pfSense_2.4.4.3-Bridge_vESXi-DEV
+
+05/21/2019  11:03 AM    <DIR>          .
+05/21/2019  07:16 AM    <DIR>          ..
+05/21/2019  06:46 AM               491 pfSense_2.4.4.3-Bridge_vESXi-DEV-4cb14b3f.hlog
+05/21/2019  06:46 AM     8,589,934,592 pfSense_2.4.4.3-Bridge_vESXi-DEV-flat.vmdk
+05/21/2019  06:46 AM           270,840 pfSense_2.4.4.3-Bridge_vESXi-DEV.nvram
+05/21/2019  06:46 AM               580 pfSense_2.4.4.3-Bridge_vESXi-DEV.vmdk
+05/21/2019  06:46 AM                 0 pfSense_2.4.4.3-Bridge_vESXi-DEV.vmsd
+05/21/2019  08:15 AM             2,985 pfSense_2.4.4.3-Bridge_vESXi-DEV.vmx
+05/21/2019  08:15 AM    <DIR>          pfSense_2.4.4.3-Bridge_vESXi-DEV.vmx.lck
+05/21/2019  08:15 AM               287 pfSense_2.4.4.3-Bridge_vESXi-DEV.vmxf
+               7 File(s)  8,590,209,775 bytes
+
+ Directory of Z:\pfSense_2.4.4.3-Bridge_vESXi-DEV\pfSense_2.4.4.3-Bridge_vESXi-DEV.vmx.lck
+
+05/21/2019  08:15 AM    <DIR>          .
+05/21/2019  11:03 AM    <DIR>          ..
+05/21/2019  08:15 AM               512 M25493.lck
+               1 File(s)            512 bytes
+
+ Directory of Z:\PiHole - Virgin-Updated
+
+05/21/2019  11:03 AM    <DIR>          .
+05/21/2019  07:16 AM    <DIR>          ..
+05/21/2019  07:40 AM               428 PiHole - Virgin-Updated-617a152c.hlog
+05/21/2019  07:40 AM                 0 PiHole - Virgin-Updated-ctk.vmdk
+05/21/2019  07:40 AM                 0 PiHole - Virgin-Updated-flat.vmdk
+05/21/2019  07:40 AM                 0 PiHole - Virgin-Updated.nvram
+05/21/2019  07:40 AM               641 PiHole - Virgin-Updated.vmdk
+05/21/2019  07:40 AM                 0 PiHole - Virgin-Updated.vmsd
+05/21/2019  08:20 AM             2,379 PiHole - Virgin-Updated.vmx
+05/21/2019  08:20 AM    <DIR>          PiHole - Virgin-Updated.vmx.lck
+05/21/2019  08:20 AM               278 PiHole - Virgin-Updated.vmxf
+               8 File(s)          3,726 bytes
+
+ Directory of Z:\PiHole - Virgin-Updated\PiHole - Virgin-Updated.vmx.lck
+
+05/21/2019  08:20 AM    <DIR>          .
+05/21/2019  11:03 AM    <DIR>          ..
+05/21/2019  08:20 AM               512 M04337.lck
+               1 File(s)            512 bytes
+
+ Directory of Z:\Snap_Windows 10 v1903-201h_v113
+
+05/21/2019  07:10 AM    <DIR>          .
+05/21/2019  07:16 AM    <DIR>          ..
+05/21/2019  06:50 AM                 0 Snap_Windows 10 v1903-201h_v113.vmsd
+               1 File(s)              0 bytes
+
+ Directory of Z:\Template_pfSense
+
+05/21/2019  11:05 AM    <DIR>          .
+05/21/2019  07:16 AM    <DIR>          ..
+05/21/2019  06:01 AM               379 Template_pfSense-472d72f2.hlog
+05/21/2019  06:01 AM     8,589,934,592 Template_pfSense-flat.vmdk
+05/21/2019  06:01 AM           270,840 Template_pfSense.nvram
+05/21/2019  06:01 AM               564 Template_pfSense.vmdk
+05/21/2019  06:01 AM                 0 Template_pfSense.vmsd
+05/21/2019  08:20 AM             2,905 Template_pfSense.vmx
+05/21/2019  08:20 AM    <DIR>          Template_pfSense.vmx.lck
+05/21/2019  08:20 AM               271 Template_pfSense.vmxf
+               7 File(s)  8,590,209,551 bytes
+
+ Directory of Z:\Template_pfSense\Template_pfSense.vmx.lck
+
+05/21/2019  08:20 AM    <DIR>          .
+05/21/2019  11:05 AM    <DIR>          ..
+05/21/2019  08:20 AM               512 M19719.lck
+               1 File(s)            512 bytes
+
+ Directory of Z:\Test_FreeNAS
+
+05/21/2019  11:07 AM    <DIR>          .
+05/21/2019  07:16 AM    <DIR>          ..
+05/21/2019  07:16 AM               353 Test_FreeNAS-56526ea6.hlog
+05/21/2019  07:16 AM           270,840 Test_FreeNAS.nvram
+05/21/2019  07:16 AM                 0 Test_FreeNAS.vmsd
+05/21/2019  08:09 AM             3,530 Test_FreeNAS.vmx
+05/21/2019  07:16 AM     8,589,934,592 Test_FreeNAS_2-flat.vmdk
+05/21/2019  07:16 AM               503 Test_FreeNAS_2.vmdk
+               6 File(s)  8,590,209,818 bytes
+
+     Total Files Listed:
+             221 File(s) 34,461,430,111 bytes
+              95 Dir(s)  114,445,312,000 bytes free
+
+C:\Users\Administrator>
+
+
+
+ Directory of E:\out
+
+05/21/2019  10:54 AM    <DIR>          .
+05/21/2019  10:54 AM    <DIR>          ..
+05/21/2019  10:46 AM    <DIR>          Clone_pfSense-Internet
+05/21/2019  10:50 AM       593,200,640 Clone_pfSense-Internet.ova
+05/21/2019  10:46 AM    <DIR>          pfSense_2.4.4.3-Bridge_vESXi-DEV
+05/21/2019  10:52 AM       496,084,480 pfSense_2.4.4.3-Bridge_vESXi-DEV.ova
+05/21/2019  10:46 AM    <DIR>          PiHole
+05/21/2019  10:46 AM    <DIR>          Template_pfSense
+05/21/2019  10:54 AM       496,084,480 Template_pfSense.ova
+05/21/2019  10:46 AM    <DIR>          Test_FreeNAS
+05/21/2019  10:56 AM       643,825,152 Test_FreeNAS.ova
+               4 File(s)  2,229,194,752 bytes
+               
+               
+               
+                Directory of E:\out2
+
+05/21/2019  11:05 AM    <DIR>          .
+05/21/2019  11:05 AM    <DIR>          ..
+05/21/2019  11:01 AM       593,200,640 Clone_pfSense-Internet.ova
+05/21/2019  11:03 AM       496,084,480 pfSense_2.4.4.3-Bridge_vESXi-DEV.ova
+05/21/2019  11:05 AM       496,084,480 Template_pfSense.ova
+05/21/2019  11:07 AM       643,825,152 Test_FreeNAS.ova
+               4 File(s)  2,229,194,752 bytes
+               2 Dir(s)  788,333,408,256 bytes free
+
