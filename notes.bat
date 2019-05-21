@@ -1,0 +1,1 @@
+for %i in (teams.txt) DO rclone.exe lsd %T%%i

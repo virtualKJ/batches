@@ -1,0 +1,19 @@
+Microsoft Windows [Version 10.0.17763.503]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator>subst
+
+C:\Users\Administrator>subst /?
+Associates a path with a drive letter.
+
+SUBST [drive1: [drive2:]path]
+SUBST drive1: /D
+
+  drive1:        Specifies a virtual drive to which you want to assign a path.
+  [drive2:]path  Specifies a physical drive and path you want to assign to
+                 a virtual drive.
+  /D             Deletes a substituted (virtual) drive.
+
+Type SUBST with no parameters to display a list of current virtual drives.
+
+C:\Users\Administrator>

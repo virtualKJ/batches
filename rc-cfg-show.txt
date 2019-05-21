@@ -1,0 +1,40 @@
+[vhdx]
+type = drive
+service_account_file = C:\.sa\vhdx.json
+team_drive = 0AKwwffrAxXTgUk9PVA
+
+[vmdk]
+type = drive
+service_account_file = C:\.sa\vmdk.json
+team_drive = 0ANHZmPPk2AWnUk9PVA
+
+[bak]
+type = drive
+service_account_file = C:\.sa\bak.json
+team_drive = 0ADXMs30sfX55Uk9PVA
+
+[ln]
+type = local
+nounc = true
+copy_links = true
+
+[1]
+type = alias
+remote = G:
+
+[2]
+type = alias
+remote = /"Team Drives"/
+
+[0]
+type = union
+remotes = 1: 2:
+
+[11]
+type = alias
+remote = 1:'Team Drives'
+
+[121]
+type = alias
+remote = A:.cloud/.work/"Trying to get Rclone and Windows to Play Nice"/
+

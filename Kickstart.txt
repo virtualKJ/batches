@@ -1,0 +1,109 @@
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+vmaccepteula
+install --firstdisk --overwritevmfs
+rootpw vmware123
+reboot
+ 
+network --bootproto=static --ip=192.168.1.200 --netmask=255.255.255.0 --gateway=192.168.1.1 --hostname=mini.primp-industries.com --nameserver=192.168.1.1 --addvmportgroup=1
+ 
+%post --interpreter=busybox
+ 
+ 
+# stop USB Arbitrator service to access USB device in ESXi Shell
+/etc/init.d/usbarbitrator stop
+ 
+# copy service VM to local VMFS datastore
+cp /vmfs/volumes/SERVICEVM/vMA.tar.gz /vmfs/volumes/datastore1
+tar -zvxC /vmfs/volumes/datastore1 -f /vmfs/volumes/datastore1/vMA.tar.gz
+rm -f /vmfs/volumes/datastore1/vMA.tar.gz
+ 
+# add guestinfo property for ESXi IP Address for adv. VM deployment
+ESXI_IP=$(localcli network ip interface ipv4 get | grep vmk0 | awk '{print $2}')
+echo "guestinfo.esxi_ip = ${ESXI_IP}" >> /vmfs/volumes/datastore1/vMA/vMA.vmx
+ 
+%firstboot --interpreter=busybox
+ 
+ 
+# Ensure hostd is ready
+while ! vim-cmd hostsvc/runtimeinfo; do
+sleep 10
+done
+ 
+# enable & start SSH
+vim-cmd hostsvc/enable_ssh
+vim-cmd hostsvc/start_ssh
+ 
+# enable & start ESXi Shell
+vim-cmd hostsvc/enable_esx_shell
+vim-cmd hostsvc/start_esx_shell
+ 
+# Suppress ESXi Shell warning
+esxcli system settings advanced set -o /UserVars/SuppressShellWarning -i 1
+ 
+# rename datastore1
+vim-cmd hostsvc/datastore/rename datastore1 mini-local-datastore-1
+ 
+# Register VM
+vim-cmd solo/registervm /vmfs/volumes/mini-local-datastore-1/vMA/vMA.vmx
+ 
+# connect USB device via passthrough
+USB_DEV_NAME="Alcor Micro Corp"
+USB_DEV_BUSID=$(lsusb | grep "${USB_DEV_NAME}" | awk '{print $2}' | cut -c 2)
+vim-cmd vmsvc/device.connusbdev 1 "path:${USB_DEV_BUSID}/0/1 version:2"
+ 
+# power on VM
+vim-cmd vmsvc/power.on 1

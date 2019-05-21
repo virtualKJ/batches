@@ -1,0 +1,1 @@
+FOR /F "usebackq delims==" %i IN (`rclone.exe lsf %T%`) DO @echo %i

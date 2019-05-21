@@ -1,0 +1,390 @@
+### Standard Options
+
+Here are the standard options specific to ftp (FTP Connection).
+
+#### --ftp-host
+
+FTP host to connect to
+
+- Config:      host
+- Env Var:     RCLONE_FTP_HOST
+- Type:        string
+- Default:     ""
+- Examples:
+    - "ftp.example.com"
+        - Connect to ftp.example.com
+
+#### --ftp-user
+
+FTP username, leave blank for current username, 
+
+- Config:      user
+- Env Var:     RCLONE_FTP_USER
+- Type:        string
+- Default:     ""
+
+#### --ftp-port
+
+FTP port, leave blank to use default (21)
+
+- Config:      port
+- Env Var:     RCLONE_FTP_PORT
+- Type:        string
+- Default:     ""
+
+#### --ftp-pass
+
+FTP password
+
+- Config:      pass
+- Env Var:     RCLONE_FTP_PASS
+- Type:        string
+- Default:     ""
+
+### Advanced Options
+
+Here are the advanced options specific to ftp (FTP Connection).
+
+#### --ftp-concurrency
+
+Maximum number of FTP simultaneous connections, 0 for unlimited
+
+- Config:      concurrency
+- Env Var:     RCLONE_FTP_CONCURRENCY
+- Type:        int
+- Default:     0
+
+[
+{"Path":"$Recycle.Bin","Name":"$Recycle.Bin","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T04:51:42.7987861-04:00","IsDir":true},
+{"Path":".a","Name":".a","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T14:18:05.0000000-04:00","IsDir":true},
+{"Path":".b","Name":".b","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T14:18:18.0000000-04:00","IsDir":true},
+{"Path":".bat","Name":".bat","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T15:33:36.7050000-04:00","IsDir":true},
+{"Path":".cloud","Name":".cloud","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T14:56:24.1605981-04:00","IsDir":true},
+{"Path":".home","Name":".home","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T22:46:02.0207083-04:00","IsDir":true},
+{"Path":".link","Name":".link","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T22:16:32.8546375-04:00","IsDir":true},
+{"Path":".local","Name":".local","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T14:56:51.6432157-04:00","IsDir":true},
+{"Path":".mount","Name":".mount","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T14:59:17.7147329-04:00","IsDir":true},
+{"Path":".sa","Name":".sa","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-11T02:16:30.5052152-04:00","IsDir":true},
+{"Path":".w","Name":".w","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T17:12:35.7340000-04:00","IsDir":true},
+{"Path":".w1","Name":".w1","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T14:28:38.1760000-04:00","IsDir":true},
+{"Path":"Documents and Settings","Name":"Documents and Settings","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T04:51:31.8487582-04:00","IsDir":true},
+{"Path":"PerfLogs","Name":"PerfLogs","Size":-1,"MimeType":"inode/directory","ModTime":"2018-09-15T03:19:00.8468585-04:00","IsDir":true},
+{"Path":"Program Files","Name":"Program Files","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T11:15:01.5011612-04:00","IsDir":true},
+{"Path":"Program Files (x86)","Name":"Program Files (x86)","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T14:14:23.4902109-04:00","IsDir":true},
+{"Path":"ProgramData","Name":"ProgramData","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T06:14:45.2197763-04:00","IsDir":true},
+{"Path":"Recovery","Name":"Recovery","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T10:19:13.2421738-04:00","IsDir":true},
+{"Path":"System Volume Information","Name":"System Volume Information","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T17:45:15.0998935-04:00","IsDir":true},
+{"Path":"Team Drive List Before Removing A Lot.txt","Name":"Team Drive List Before Removing A Lot.txt","Size":1849,"MimeType":"text/plain; charset=utf-8","ModTime":"2019-05-13T13:05:10.3428480-04:00","IsDir":false},
+{"Path":"Users","Name":"Users","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T04:51:31.8487582-04:00","IsDir":true},
+{"Path":"Windows","Name":"Windows","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T22:36:25.6857607-04:00","IsDir":true},
+{"Path":"boot","Name":"boot","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T14:47:02.2274490-04:00","IsDir":true},
+{"Path":"dump","Name":"dump","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T19:05:23.3313936-04:00","IsDir":true},
+{"Path":"fuck","Name":"fuck","Size":-1,"MimeType":"inode/directory","ModTime":"2019-05-13T15:30:24.2687500-04:00","IsDir":true},
+{"Path":"pagefile.sys","Name":"pagefile.sys","Size":4160749568,"MimeType":"application/octet-stream","ModTime":"2019-05-13T11:55:22.3389204-04:00","IsDir":false}
+]
+list disk The following command was not found: namespance ?.
+
+The following commands are available:
+
+Commands in this context:
+?              - Displays a list of commands.
+dump           - Displays a configuration script.
+help           - Displays a list of commands.
+show           - Displays information.
+
+To view help for a command, type the command, followed by a space, and then
+ type ?.
+
+netsh>
+The following commands are available:
+
+Commands in this context:
+?              - Displays a list of commands.
+add            - Adds a configuration entry to a list of entries.
+advfirewall    - Changes to the `netsh advfirewall' context.
+branchcache    - Changes to the `netsh branchcache' context.
+bridge         - Changes to the `netsh bridge' context.
+delete         - Deletes a configuration entry from a list of entries.
+dhcpclient     - Changes to the `netsh dhcpclient' context.
+dnsclient      - Changes to the `netsh dnsclient' context.
+dump           - Displays a configuration script.
+exec           - Runs a script file.
+firewall       - Changes to the `netsh firewall' context.
+help           - Displays a list of commands.
+http           - Changes to the `netsh http' context.
+interface      - Changes to the `netsh interface' context.
+ipsec          - Changes to the `netsh ipsec' context.
+ipsecdosprotection - Changes to the `netsh ipsecdosprotection' context.
+lan            - Changes to the `netsh lan' context.
+namespace      - Changes to the `netsh namespace' context.
+netio          - Changes to the `netsh netio' context.
+ras            - Changes to the `netsh ras' context.
+rpc            - Changes to the `netsh rpc' context.
+set            - Updates configuration settings.
+show           - Displays information.
+trace          - Changes to the `netsh trace' context.
+wcn            - Changes to the `netsh wcn' context.
+wfp            - Changes to the `netsh wfp' context.
+winhttp        - Changes to the `netsh winhttp' context.
+winsock        - Changes to the `netsh winsock' context.
+wlan           - Changes to the `netsh wlan' context.
+
+The following sub-contexts are available:
+ advfirewall branchcache bridge dhcpclient dnsclient firewall http interface ipsec ipsecdosprotection lan namespace netio ras rpc trace wcn wfp winhttp winsock wlan
+
+To view help for a command, type the command, followed by a space, and then
+ type ?.
+
+.drops
+A Cirius Cloud
+A Clean Cloud
+A Family Cloud
+A Friendly Cloud
+A Local Cloud
+A Messy Cloud
+A Mobile Cloud
+A Nimbus Cloud
+A Public Cloud
+A Sentient Cloud
+A Virtual Cloud
+Accounts
+Addresses
+Alphas
+Amazon S3 Buckets
+Android
+Anime
+Appliances
+Applications
+Apps
+Archives
+Attempts
+Automated
+Autonomous
+BaK
+BaK-Clear
+BaK-Crypt
+BaK2
+Backups
+Batches
+Betas
+Bills
+Binaries
+Bins
+Blogs
+Bookmarks
+Books
+Boon Baller
+Bots
+Bundles
+Calls
+Categories
+Changes
+Cleans
+Clones
+Cloud
+Clouds
+Combinations
+Companies
+Compressed
+Configs
+Configurations
+Consoles
+Consoles_MIXED
+Consoles_PS3-A
+Consoles_WiiU
+Continuous
+Conversions
+Copies
+Crypt
+Crypts
+DaMaMa
+Dashboards
+Dashes
+Databases
+Decrypts
+Deletes
+Desktops
+Destinations
+Developers
+Developments
+Directories
+Discs
+Disks
+Disputes
+Distributions
+Distros
+Docs
+Documentation
+Documents
+Done
+Done_PUB
+Downloads
+Downloads2
+Drivers
+Drives
+Dumps
+Dupes
+Duplications
+Emulators
+Encrypts
+Entertainment
+Executables
+Executions
+Explanations
+Exports
+Extensions
+Extractions
+Failures
+File Extensions
+Filebot
+Files
+Firewalls
+Firmwares
+Flats
+Folders
+Functions
+GCP
+Games
+Githubs
+Gits
+Groups
+HDD
+HTPC
+Helps
+Histories
+Home
+Homelabs
+Homepaths
+Homes
+Hubs
+ISO
+Icons
+Identities
+Images
+Imports
+Initiators
+Insights
+Installers
+Installs
+Jobs
+Keys
+Labels
+Libraries
+Licenses
+Links
+Lists
+Locations
+Locks
+Materials
+Menus
+Merge
+Merges
+Messages
+Messes
+Methods
+Migrations
+Mobile
+Modifications
+Monitors
+Mounts
+Moves
+Movies
+Multimedia
+Music
+Names
+Networks
+Notebooks
+Notes
+P2V
+PGP
+Packages
+Panels
+Payments
+Phone
+Pictures
+Places
+Platforms
+Plex
+Plex2
+Pools
+Portables
+Posts
+Private
+Profiles
+Programs
+Projects
+Public
+Purchases
+Purges
+Purposes
+Queues
+Rars
+Readings
+Receipts
+Redirects
+Registrations
+Repo
+Rips
+RolandHDD
+RolandRatz
+Roms
+Routers
+SA
+Saves
+Scratch
+Screens
+Scripts
+Secondaries
+Seeds
+Servers
+Services
+Settings
+Setups
+Shares
+Shells
+Shopping
+Shortcuts
+Singles
+Skydancer
+Sonarr
+Sorts
+Sounds
+Sources
+Steps
+Streams
+StuffMeSenpi
+Switches
+Systems
+TV Shows
+Targets
+Temporary
+Tests
+Tools
+Training
+Trials
+Unsorted
+Updates
+Upgrades
+Uses
+Utilities
+V2V
+VHDX
+VMDK
+VMware
+Vaults
+Veeam
+Videos
+Volumes
+WIP
+Web
+Webpages
+Websites
+Windows
+Workspaces
+XBOX
+Zips
+vDiscs
+vDrives
+%E% 3=rclone.exe -L --max-depth 3 $1 $2 >> %A%
+rcl lsf %T%\XBOX
+echo n %A% >> %WINDIR%\see.bat

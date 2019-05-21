@@ -1,0 +1,64 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 1288-BE1B
+
+ Directory of C:\Users\Administrator
+
+05/13/2019  07:49 PM    <DIR>          .
+05/13/2019  07:49 PM    <DIR>          ..
+05/13/2019  02:28 PM    <SYMLINKD>     .1 [C:\.w1]
+05/13/2019  08:47 AM    <DIR>          .config
+05/13/2019  05:56 PM    <SYMLINKD>     1d2 [$2]
+05/13/2019  05:13 AM    <DIR>          3D Objects
+05/13/2019  07:35 PM                 0 clean-all.bat
+05/13/2019  05:45 PM    <DIR>          Cloud
+05/13/2019  05:05 PM               329 cmd-h.bat
+05/13/2019  05:13 AM    <DIR>          Contacts
+05/13/2019  05:56 PM    <SYMLINKD>     d2 [G:\Team']
+05/13/2019  05:55 PM    <SYMLINKD>     dd1 [G:\Team]
+05/13/2019  05:55 PM    <SYMLINKD>     dd2 [G:\'Team]
+05/13/2019  04:13 PM    <DIR>          Desktop
+05/13/2019  05:57 PM    <SYMLINKD>     dfgh1d2 [$2]
+05/13/2019  05:57 PM    <SYMLINKD>     dgffgh1d2 [G:\Team$]
+05/13/2019  06:07 PM    <DIR>          Documents
+05/13/2019  05:47 PM    <DIR>          Documents - Copy
+05/13/2019  05:54 PM    <SYMLINKD>     double-dump [G:\Team]
+05/13/2019  05:54 PM    <SYMLINKD>     double-dump1 [G:\Team]
+05/13/2019  05:54 PM    <SYMLINKD>     double-dump2 [G:\Team]
+05/13/2019  05:58 PM    <SYMLINKD>     dsdgdfghgffgh1d2 [G:\Team Drives\G:\Team]
+05/13/2019  05:57 PM    <SYMLINKD>     dsdgffgh1d2 [%G:\Team]
+05/13/2019  05:52 PM    <JUNCTION>     dumpt [G:\Team]
+05/13/2019  05:13 AM    <DIR>          Favorites
+05/13/2019  02:20 PM    <JUNCTION>     helps [G:\Team Drives\Helps]
+05/13/2019  05:13 AM    <DIR>          Links
+05/13/2019  05:07 PM                10 listdisks.txt
+05/13/2019  05:54 PM    <JUNCTION>     mkd [G:\Team]
+05/13/2019  05:13 AM    <DIR>          Music
+05/13/2019  06:56 PM               398 name.txt
+05/13/2019  06:55 PM             2,008 netsh0.txt
+05/13/2019  05:13 AM    <DIR>          Pictures
+05/13/2019  07:49 PM                16 rcm.bat
+05/13/2019  05:13 AM    <DIR>          Saved Games
+05/13/2019  05:13 AM    <DIR>          Searches
+05/13/2019  05:48 PM                15 shell.bat
+05/13/2019  06:03 PM             2,391 team-drives-bare.txt
+05/13/2019  07:33 PM                96 vars.txt
+05/13/2019  05:13 AM    <DIR>          Videos
+05/13/2019  03:20 PM    <JUNCTION>     windows [C:\Windows]
+               9 File(s)          5,263 bytes
+              32 Dir(s)  235,825,823,744 bytes free
+          -1 2019-05-13 08:47:39        -1 .config
+          -1 2019-05-13 05:47:40        -1 .obs32
+          -1 2019-05-13 05:13:41        -1 3D Objects
+          -1 2019-05-13 04:51:32        -1 AppData
+          -1 2019-05-13 17:45:00        -1 Cloud
+          -1 2019-05-13 05:13:41        -1 Contacts
+          -1 2019-05-13 16:13:24        -1 Desktop
+          -1 2019-05-13 18:07:19        -1 Documents
+          -1 2019-05-13 17:47:17        -1 Documents - Copy
+          -1 2019-05-13 05:13:41        -1 Favorites
+          -1 2019-05-13 05:13:41        -1 Links
+          -1 2019-05-13 05:13:41        -1 Music
+          -1 2019-05-13 05:13:41        -1 Pictures
+          -1 2019-05-13 05:13:41        -1 Saved Games
+          -1 2019-05-13 05:13:41        -1 Searches
+          -1 2019-05-13 05:13:41        -1 Videos

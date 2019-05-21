@@ -1,0 +1,167 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, May 14, 2019 1:25:45 AM
+   Source : C:\Users\Administrator\
+     Dest : A:\.cloud\scratch\
+
+    Files : *.*
+	    
+  Options : *.* /V /X /TS /FP /L /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                  19	C:\Users\Administrator\
+	*EXTRA Dir        -1	A:\.cloud\scratch\PrintCHM-Scripting\
+	  *EXTRA File 		     230 2019/05/13 16:50:55	A:\.cloud\scratch\desktop.ini
+	    New File  		       0 2019/05/14 03:13:17	C:\Users\Administrator\2
+	    New File  		       0 2019/05/13 23:35:07	C:\Users\Administrator\clean-all.bat
+	    New File  		     329 2019/05/13 21:05:00	C:\Users\Administrator\cmd-h.bat
+	    New File  		    3658 2019/05/14 02:46:44	C:\Users\Administrator\json.json
+	    New File  		    3658 2019/05/14 02:46:02	C:\Users\Administrator\json.txt
+	    New File  		      10 2019/05/13 21:07:22	C:\Users\Administrator\listdisks.txt
+	    New File  		     398 2019/05/13 22:56:14	C:\Users\Administrator\name.txt
+	    New File  		    2008 2019/05/13 22:55:25	C:\Users\Administrator\netsh0.txt
+	    New File  		   1.2 m 2019/05/13 15:54:22	C:\Users\Administrator\NTUSER.DAT
+	    New File  		  413696 2019/05/13 08:51:31	C:\Users\Administrator\ntuser.dat.LOG1
+	    New File  		  413696 2019/05/13 08:51:31	C:\Users\Administrator\ntuser.dat.LOG2
+	    New File  		   65536 2019/05/13 09:00:51	C:\Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TM.blf
+	    New File  		  524288 2019/05/13 08:51:31	C:\Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TMContainer00000000000000000001.regtrans-ms
+	    New File  		  524288 2019/05/13 08:51:31	C:\Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TMContainer00000000000000000002.regtrans-ms
+	    New File  		      20 2019/05/13 08:51:32	C:\Users\Administrator\ntuser.ini
+	    New File  		      16 2019/05/13 23:49:11	C:\Users\Administrator\rcm.bat
+	    New File  		      15 2019/05/13 21:48:35	C:\Users\Administrator\shell.bat
+	    New File  		    2391 2019/05/13 22:03:05	C:\Users\Administrator\team-drives-bare.txt
+	    New File  		      96 2019/05/13 23:33:03	C:\Users\Administrator\vars.txt
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         0         1         0         0         1
+   Files :        19        19         0         0         0         1
+   Bytes :    3.11 m    3.11 m         0         0         0       230
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+   Ended : Tuesday, May 14, 2019 1:25:45 AM
+
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, May 14, 2019 1:29:00 AM
+   Source : C:\Users\Administrator\
+     Dest : A:\
+
+    Files : *.*
+	    
+  Options : *.* /V /X /TS /FP /L /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                  19	C:\Users\Administrator\
+	*EXTRA Dir        -1	A:\$RECYCLE.BIN\
+	*EXTRA Dir        -1	A:\.cloud\
+	*EXTRA Dir        -1	A:\.local\
+	*EXTRA Dir        -1	A:\doskey\
+	*EXTRA Dir        -1	A:\paths\
+	*EXTRA Dir        -1	A:\playnice\
+	*EXTRA Dir        -1	A:\System Volume Information\
+	  *EXTRA File 		     147 2019/05/13 23:32:06	A:\doskey.cmd
+	  *EXTRA File 		    1211 2019/05/14 05:18:16	A:\first-robocopy-failure.txt
+	  *EXTRA File 		   31390 2019/05/14 03:30:34	A:\flags.txt
+	  *EXTRA File 		       0 2019/05/14 05:12:48	A:\robocopy
+	  *EXTRA File 		    7938 2019/05/14 03:35:45	A:\robocopy.txt
+	  *EXTRA File 		      65 2019/05/14 05:11:57	A:\work.path
+	  *EXTRA File 		      66 2019/05/14 05:21:17	A:\work.path.rclone
+	  *EXTRA File 		      65 2019/05/14 05:11:57	A:\workpath.bat
+	    New File  		       0 2019/05/14 03:13:17	C:\Users\Administrator\2
+	    New File  		       0 2019/05/13 23:35:07	C:\Users\Administrator\clean-all.bat
+	    New File  		     329 2019/05/13 21:05:00	C:\Users\Administrator\cmd-h.bat
+	    New File  		    3658 2019/05/14 02:46:44	C:\Users\Administrator\json.json
+	    New File  		    3658 2019/05/14 02:46:02	C:\Users\Administrator\json.txt
+	    New File  		      10 2019/05/13 21:07:22	C:\Users\Administrator\listdisks.txt
+	    New File  		     398 2019/05/13 22:56:14	C:\Users\Administrator\name.txt
+	    New File  		    2008 2019/05/13 22:55:25	C:\Users\Administrator\netsh0.txt
+	    New File  		   1.2 m 2019/05/13 15:54:22	C:\Users\Administrator\NTUSER.DAT
+	    New File  		   16384 2019/05/13 08:51:31	C:\Users\Administrator\ntuser.dat.LOG1
+	    New File  		  413696 2019/05/13 08:51:31	C:\Users\Administrator\ntuser.dat.LOG2
+	    New File  		   65536 2019/05/13 09:00:51	C:\Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TM.blf
+	    New File  		  524288 2019/05/13 08:51:31	C:\Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TMContainer00000000000000000001.regtrans-ms
+	    New File  		  524288 2019/05/13 08:51:31	C:\Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TMContainer00000000000000000002.regtrans-ms
+	    New File  		      20 2019/05/13 08:51:32	C:\Users\Administrator\ntuser.ini
+	    New File  		      16 2019/05/13 23:49:11	C:\Users\Administrator\rcm.bat
+	    New File  		      15 2019/05/13 21:48:35	C:\Users\Administrator\shell.bat
+	    New File  		    2391 2019/05/13 22:03:05	C:\Users\Administrator\team-drives-bare.txt
+	    New File  		      96 2019/05/13 23:33:03	C:\Users\Administrator\vars.txt
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         0         1         0         0         7
+   Files :        19        19         0         0         0         8
+   Bytes :    2.73 m    2.73 m         0         0         0    39.9 k
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+   Ended : Tuesday, May 14, 2019 1:29:00 AM
+
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, May 14, 2019 1:29:37 AM
+   Source : C:\Users\Administrator\
+     Dest : A:\
+
+    Files : *.*
+	    
+  Options : *.* /V /X /TS /FP /L /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                  19	C:\Users\Administrator\
+	*EXTRA Dir        -1	A:\$RECYCLE.BIN\
+	*EXTRA Dir        -1	A:\.cloud\
+	*EXTRA Dir        -1	A:\.local\
+	*EXTRA Dir        -1	A:\doskey\
+	*EXTRA Dir        -1	A:\paths\
+	*EXTRA Dir        -1	A:\playnice\
+	*EXTRA Dir        -1	A:\System Volume Information\
+	  *EXTRA File 		     147 2019/05/13 23:32:06	A:\doskey.cmd
+	  *EXTRA File 		    1211 2019/05/14 05:18:16	A:\first-robocopy-failure.txt
+	  *EXTRA File 		   31390 2019/05/14 03:30:34	A:\flags.txt
+	  *EXTRA File 		       0 2019/05/14 05:12:48	A:\robocopy
+	  *EXTRA File 		    7938 2019/05/14 03:35:45	A:\robocopy.txt
+	  *EXTRA File 		      65 2019/05/14 05:11:57	A:\work.path
+	  *EXTRA File 		      66 2019/05/14 05:21:17	A:\work.path.rclone
+	  *EXTRA File 		      65 2019/05/14 05:11:57	A:\workpath.bat
+	    New File  		       0 2019/05/14 03:13:17	C:\Users\Administrator\2
+	    New File  		       0 2019/05/13 23:35:07	C:\Users\Administrator\clean-all.bat
+	    New File  		     329 2019/05/13 21:05:00	C:\Users\Administrator\cmd-h.bat
+	    New File  		    3658 2019/05/14 02:46:44	C:\Users\Administrator\json.json
+	    New File  		    3658 2019/05/14 02:46:02	C:\Users\Administrator\json.txt
+	    New File  		      10 2019/05/13 21:07:22	C:\Users\Administrator\listdisks.txt
+	    New File  		     398 2019/05/13 22:56:14	C:\Users\Administrator\name.txt
+	    New File  		    2008 2019/05/13 22:55:25	C:\Users\Administrator\netsh0.txt
+	    New File  		   1.2 m 2019/05/13 15:54:22	C:\Users\Administrator\NTUSER.DAT
+	    New File  		   16384 2019/05/13 08:51:31	C:\Users\Administrator\ntuser.dat.LOG1
+	    New File  		  413696 2019/05/13 08:51:31	C:\Users\Administrator\ntuser.dat.LOG2
+	    New File  		   65536 2019/05/13 09:00:51	C:\Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TM.blf
+	    New File  		  524288 2019/05/13 08:51:31	C:\Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TMContainer00000000000000000001.regtrans-ms
+	    New File  		  524288 2019/05/13 08:51:31	C:\Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TMContainer00000000000000000002.regtrans-ms
+	    New File  		      20 2019/05/13 08:51:32	C:\Users\Administrator\ntuser.ini
+	    New File  		      16 2019/05/13 23:49:11	C:\Users\Administrator\rcm.bat
+	    New File  		      15 2019/05/13 21:48:35	C:\Users\Administrator\shell.bat
+	    New File  		    2391 2019/05/13 22:03:05	C:\Users\Administrator\team-drives-bare.txt
+	    New File  		      96 2019/05/13 23:33:03	C:\Users\Administrator\vars.txt
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         0         1         0         0         7
+   Files :        19        19         0         0         0         8
+   Bytes :    2.73 m    2.73 m         0         0         0    39.9 k
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+   Ended : Tuesday, May 14, 2019 1:29:37 AM
+
